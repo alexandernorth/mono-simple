@@ -5,7 +5,7 @@ RUN apt-get update && \
 	apt-get install apt-transport-https gnupg dirmngr -y && \
 	export GNUPGHOME="$(mktemp -d)" && \
   	gpg --batch --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF && \
-  	gpg --batch --export --armor 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF > /etc/apt/trusted.gpg.d/mono.gpg.asc && \
+  	gpg --batch --export --armor 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF | apt-key add - && \
   	gpgconf --kill all && \
   	rm -rf "$GNUPGHOME" && \
 	echo "deb https://download.mono-project.com/repo/debian stable-stretch main" | tee /etc/apt/sources.list.d/mono-official-stable.list && \
