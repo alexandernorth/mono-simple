@@ -11,7 +11,7 @@ RUN apt-get update && \
 	echo "deb https://download.mono-project.com/repo/debian stable-stretch main" | tee /etc/apt/sources.list.d/mono-official-stable.list && \
 	apt-get update && \
 	apt-get install mono-devel ca-certificates-mono -y && \
-	apt-get purge --auto-remove apt-transport-https gnupg dirmngr -y && \
+	apt-get purge -y --auto-remove gnupg dirmngr && \
 	apt-get autoremove -y && \
 	apt-get clean -y && \
 	rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
